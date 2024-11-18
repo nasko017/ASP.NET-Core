@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using PhoneFlip.Web.Data;
+using PhoneFlip.Data;
 
 namespace PhoneFlip.Web
 {

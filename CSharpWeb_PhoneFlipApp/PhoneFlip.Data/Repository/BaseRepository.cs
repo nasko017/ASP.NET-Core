@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PhoneFlip.Data.Repository.Interfaces;
-using PhoneFlip.Web.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

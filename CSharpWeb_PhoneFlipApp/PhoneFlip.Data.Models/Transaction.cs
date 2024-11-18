@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,13 +9,14 @@ namespace PhoneFlip.Data.Models;
 
 public class Transaction
 {
-    public Guid Id { get; set; }
-    public Guid AdId { get; set; }
-    public Ad Ad { get; set; } = null!; // Ad that was purchased
+    [Key]
+    public Guid Id { get; set; } = Guid.NewGuid();
 
+    [Required]
     public Guid BuyerId { get; set; }
-    public virtual ApplicationUser ApplicationUser { get; set; } = null!; // User who bought the ad
+    public virtual ApplicationUser Buyer { get; set; } = null!;
 
-    public decimal Amount { get; set; } // Purchase amount
-    public DateTime TransactionDate { get; set; }
+    [Required]
+    public Guid AdId { get; set; }
+    public virtual Ad Ad { get; set; } = null!;
 }
