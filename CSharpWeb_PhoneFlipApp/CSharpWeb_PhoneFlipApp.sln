@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneFlip.Web.ViewModels", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneFlip.Web.Infrastructure", "PhoneFlip.Web.Infrastructure\PhoneFlip.Web.Infrastructure.csproj", "{56F292E2-FAE5-4286-B9B9-6449D79C7B77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneFlip.Common", "PhoneFlip.Common\PhoneFlip.Common.csproj", "{A9095710-8BED-4E06-B616-9E4217C277C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneFlip.Common", "PhoneFlip.Common\PhoneFlip.Common.csproj", "{A9095710-8BED-4E06-B616-9E4217C277C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
