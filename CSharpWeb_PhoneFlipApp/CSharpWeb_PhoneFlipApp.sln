@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneFlip.Web.Infrastructur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneFlip.Common", "PhoneFlip.Common\PhoneFlip.Common.csproj", "{A9095710-8BED-4E06-B616-9E4217C277C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneFlip.Services.Mapping", "PhoneFlip.Services.Mapping\PhoneFlip.Services.Mapping.csproj", "{601E8AC6-5187-401A-AFEF-36104BC8F85A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{A9095710-8BED-4E06-B616-9E4217C277C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9095710-8BED-4E06-B616-9E4217C277C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9095710-8BED-4E06-B616-9E4217C277C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{601E8AC6-5187-401A-AFEF-36104BC8F85A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{601E8AC6-5187-401A-AFEF-36104BC8F85A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{601E8AC6-5187-401A-AFEF-36104BC8F85A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{601E8AC6-5187-401A-AFEF-36104BC8F85A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{9140847C-2727-4A7E-AF32-EEAD05BDCBFC} = {A4624C72-A3B8-4E71-BDDA-6A4FF98C0DAB}
 		{6814AD99-F6BC-4317-9C0E-F4A34C682EAF} = {C33BFD0D-6BA5-4A0D-945C-4F84B003D1E9}
 		{56F292E2-FAE5-4286-B9B9-6449D79C7B77} = {C33BFD0D-6BA5-4A0D-945C-4F84B003D1E9}
+		{601E8AC6-5187-401A-AFEF-36104BC8F85A} = {A4624C72-A3B8-4E71-BDDA-6A4FF98C0DAB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7E10743B-22B9-4810-B999-3D6B8A426662}
