@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PhoneFlip.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -39,6 +40,7 @@ namespace PhoneFlip.Data.Repository.Interfaces
         bool Update(TType item);
 
         Task<bool> UpdateAsync(TType item);
+       
     }
 }
 

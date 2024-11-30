@@ -11,4 +11,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PhoneFlip.Data.Models\PhoneFlip.Data.Models.csproj" />
+    <ProjectReference Include="..\PhoneFlip.Data\PhoneFlip.Data.csproj" />
+    <ProjectReference Include="..\PhoneFlip.Services.Mapping\PhoneFlip.Services.Mapping.csproj" />
+    <ProjectReference Include="..\PhoneFlip.Web.ViewModels\PhoneFlip.Web.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>

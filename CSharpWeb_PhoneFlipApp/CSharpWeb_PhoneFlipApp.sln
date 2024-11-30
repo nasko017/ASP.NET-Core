@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneFlip.Web.Infrastructur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneFlip.Common", "PhoneFlip.Common\PhoneFlip.Common.csproj", "{A9095710-8BED-4E06-B616-9E4217C277C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneFlip.Services.Mapping", "PhoneFlip.Services.Mapping\PhoneFlip.Services.Mapping.csproj", "{601E8AC6-5187-401A-AFEF-36104BC8F85A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneFlip.Services.Mapping", "PhoneFlip.Services.Mapping\PhoneFlip.Services.Mapping.csproj", "{601E8AC6-5187-401A-AFEF-36104BC8F85A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

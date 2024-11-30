@@ -20,4 +20,7 @@ public class Smartphone
     [Required]
     [MaxLength(100)]
     public string Model { get; set; } = null!;
+
+    [Required]
+    public bool IsDeleted { get; set; } = false;
 }

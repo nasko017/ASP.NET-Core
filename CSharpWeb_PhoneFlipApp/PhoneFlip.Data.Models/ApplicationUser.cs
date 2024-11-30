@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,4 +15,10 @@ public class ApplicationUser : IdentityUser<Guid>
         // ReSharper disable once VirtualMemberCallInConstructor
         this.Id = Guid.NewGuid();
     }
+
+    public virtual ICollection<ApplicationUserPhone> ApplicationUserMovies { get; set; }
+           = new HashSet<ApplicationUserPhone>();
+
+    public virtual ICollection<Ad> Tickets { get; set; }
+        = new HashSet<Ad>();
 }

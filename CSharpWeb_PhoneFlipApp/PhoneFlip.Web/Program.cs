@@ -1,6 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PhoneFlip.Data;
+using PhoneFlip.Data.Models;
+using PhoneFlip.Data.Repository.Interfaces;
+using PhoneFlip.Data.Repository;
+using PhoneFlip.Services.Data.Interfaces;
+using PhoneFlip.Services.Data;
 
 namespace PhoneFlip.Web
 {
@@ -19,6 +24,12 @@ namespace PhoneFlip.Web
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<PhoneFlipDbContext>();
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<IRepository<Ad, Guid>, BaseRepository<Ad, Guid>>();
+            builder.Services.AddScoped<IRepository<TradeRequest, Guid>, BaseRepository<TradeRequest, Guid>>();
+            builder.Services.AddScoped<IAdService, AdService>();
+            builder.Services.AddScoped<ITradeService, TradeService>();
+            builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
 

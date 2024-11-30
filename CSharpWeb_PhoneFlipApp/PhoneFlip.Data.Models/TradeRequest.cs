@@ -23,4 +23,7 @@ public class TradeRequest
     [Required]
     [MaxLength(20)]
     public string Status { get; set; } = null!;
+
+    [Required]
+    public bool IsDeleted { get; set; } = false;
 }

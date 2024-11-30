@@ -24,6 +24,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PhoneFlip.Data\PhoneFlip.Data.csproj" />
+    <ProjectReference Include="..\PhoneFlip.Services.Data\PhoneFlip.Services.Data.csproj" />
+    <ProjectReference Include="..\PhoneFlip.Web.Infrastructure\PhoneFlip.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\PhoneFlip.Web.ViewModels\PhoneFlip.Web.ViewModels.csproj" />
   </ItemGroup>
 

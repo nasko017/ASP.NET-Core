@@ -34,5 +34,8 @@ public class Ad
     public string UserId { get; set; } = null!;
     public virtual ApplicationUser ApplicationUser { get; set; } = null!;
 
+    [Required]
+    public bool IsDeleted { get; set; } = false;
+
 
 }
