@@ -16,8 +16,8 @@ public class ApplicationUser : IdentityUser<Guid>
         this.Id = Guid.NewGuid();
     }
 
-    public virtual ICollection<ApplicationUserPhone> ApplicationUserMovies { get; set; }
-           = new HashSet<ApplicationUserPhone>();
+    public virtual ICollection<TradeRequest> ApplicationUserMovies { get; set; }
+           = new HashSet<TradeRequest>();
 
     public virtual ICollection<Ad> Tickets { get; set; }
         = new HashSet<Ad>();

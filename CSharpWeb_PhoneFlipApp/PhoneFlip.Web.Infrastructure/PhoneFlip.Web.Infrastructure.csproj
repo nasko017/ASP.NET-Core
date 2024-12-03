@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PhoneFlip.Common\PhoneFlip.Common.csproj" />
     <ProjectReference Include="..\PhoneFlip.Services.Data\PhoneFlip.Services.Data.csproj" />
   </ItemGroup>
 

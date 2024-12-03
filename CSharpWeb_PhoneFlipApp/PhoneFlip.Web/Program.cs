@@ -6,6 +6,9 @@ using PhoneFlip.Data.Repository.Interfaces;
 using PhoneFlip.Data.Repository;
 using PhoneFlip.Services.Data.Interfaces;
 using PhoneFlip.Services.Data;
+using PhoneFlip.Web.Infrastructure.Extensions;
+using PhoneFlip.Services.Mapping;
+using PhoneFlip.Web.Models;
 
 namespace PhoneFlip.Web
 {
@@ -13,32 +16,46 @@ namespace PhoneFlip.Web
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+            string connectionString = builder.Configuration.GetConnectionString("SQLServer")!;
+            string adminEmail = builder.Configuration.GetValue<string>("Administrator:Email")!;
+            string adminUsername = builder.Configuration.GetValue<string>("Administrator:Username")!;
+            string adminPassword = builder.Configuration.GetValue<string>("Administrator:Password")!;
 
             // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            builder.Services.AddDbContext<PhoneFlipDbContext>(options =>
-                options.UseSqlServer(connectionString));
-            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+            builder.Services
+                .AddDbContext<PhoneFlipDbContext>(options =>
+                {
+                    options.UseSqlServer(connectionString);
+                });
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<PhoneFlipDbContext>();
+            builder.Services
+                .AddIdentity<ApplicationUser, IdentityRole<Guid>>(cfg =>
+                {
+                    ConfigureIdentity(builder, cfg);
+                })
+                .AddEntityFrameworkStores<PhoneFlipDbContext>()
+                .AddRoles<IdentityRole<Guid>>()
+                .AddSignInManager<SignInManager<ApplicationUser>>()
+                .AddUserManager<UserManager<ApplicationUser>>();
+
+            builder.Services.ConfigureApplicationCookie(cfg =>
+            {
+                cfg.LoginPath = "/Identity/Account/Login";
+            });
+
+            builder.Services.RegisterRepositories(typeof(ApplicationUser).Assembly);
+            //?????builder.Services.RegisterUserDefinedServices(typeof(IMovieService).Assembly);
+
             builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
 
-            builder.Services.AddScoped<IRepository<Ad, Guid>, BaseRepository<Ad, Guid>>();
-            builder.Services.AddScoped<IRepository<TradeRequest, Guid>, BaseRepository<TradeRequest, Guid>>();
-            builder.Services.AddScoped<IAdService, AdService>();
-            builder.Services.AddScoped<ITradeService, TradeService>();
-            builder.Services.AddScoped<IUserService, UserService>();
+            WebApplication app = builder.Build();
 
-            var app = builder.Build();
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).Assembly);
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseMigrationsEndPoint();
-            }
-            else
+            if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
@@ -49,15 +66,45 @@ namespace PhoneFlip.Web
             app.UseStaticFiles();
 
             app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
 
+            // Authorization can work only if we know who uses the application -> We need Authentication
+            app.UseAuthentication(); // First -> Who am I?
+            app.UseAuthorization(); // Second -> What can I do?
+
+            app.UseStatusCodePagesWithRedirects("/Home/Error/{0}");
+
+            app.SeedAdministrator(adminEmail, adminUsername, adminPassword);
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
 
             app.Run();
+        }
+        private static void ConfigureIdentity(WebApplicationBuilder builder, IdentityOptions cfg)
+        {
+            cfg.Password.RequireDigit =
+                builder.Configuration.GetValue<bool>("Identity:Password:RequireDigits");
+            cfg.Password.RequireLowercase =
+                builder.Configuration.GetValue<bool>("Identity:Password:RequireLowercase");
+            cfg.Password.RequireUppercase =
+                builder.Configuration.GetValue<bool>("Identity:Password:RequireUppercase");
+            cfg.Password.RequireNonAlphanumeric =
+                builder.Configuration.GetValue<bool>("Identity:Password:RequireNonAlphanumerical");
+            cfg.Password.RequiredLength =
+                builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
+            cfg.Password.RequiredUniqueChars =
+                builder.Configuration.GetValue<int>("Identity:Password:RequiredUniqueCharacters");
+
+            cfg.SignIn.RequireConfirmedAccount =
+                builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedAccount");
+            cfg.SignIn.RequireConfirmedEmail =
+                builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedEmail");
+            cfg.SignIn.RequireConfirmedPhoneNumber =
+                builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedPhoneNumber");
+
+            cfg.User.RequireUniqueEmail =
+                builder.Configuration.GetValue<bool>("Identity:User:RequireUniqueEmail");
         }
     }
 }

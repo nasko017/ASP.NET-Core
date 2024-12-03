@@ -49,14 +49,45 @@ public class TradeService : ITradeService
         return await _tradeRepository.UpdateAsync(trade);
     }
 
+    public async Task<bool> UpdateTradeStatusAsync(Guid tradeId, string status)
+    {
+        // Validate the trade ID and status
+        if (string.IsNullOrWhiteSpace(status) || !new[] { "Pending", "Accepted", "Rejected" }.Contains(status))
+        {
+            throw new ArgumentException("Invalid trade status.");
+        }
+
+        var trade = await _tradeRepository.GetByIdAsync(tradeId);
+        if (trade == null)
+        {
+            return false; // Trade not found
+        }
+
+        trade.Status = status;
+        _tradeRepository.Update(trade);
+        await _tradeRepository.UpdateAsync(trade);
+
+        return true;
+    }
+
     public Task<TradeRequest?> GetTradeByIdAsync(Guid id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<bool> UpdateTradeStatusAsync(Guid tradeId, string status)
-    {
-        throw new NotImplementedException();
-    }
+    //public async Task<bool> SoftDeleteTradeAsync(Guid tradeId)
+    //{
+    //    var trade = await _tradeRepository.GetByIdAsync(tradeId);
+    //    if (trade == null)
+    //    {
+    //        return false; // Trade not found
+    //    }
+    //
+    //    // Perform a soft delete (if TradeRequest has an IsDeleted property)
+    //    trade.Status = "Deleted";;
+    //    await _tradeRepository.UpdateAsync(trade);
+    //
+    //    return true;
+    //}
 }
 
