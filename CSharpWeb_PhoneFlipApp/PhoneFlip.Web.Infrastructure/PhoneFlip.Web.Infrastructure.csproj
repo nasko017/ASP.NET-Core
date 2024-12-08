@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PhoneFlip.Common\PhoneFlip.Common.csproj" />
+    <ProjectReference Include="..\PhoneFlip.Data.Models\PhoneFlip.Data.Models.csproj" />
+    <ProjectReference Include="..\PhoneFlip.Data\PhoneFlip.Data.csproj" />
     <ProjectReference Include="..\PhoneFlip.Services.Data\PhoneFlip.Services.Data.csproj" />
   </ItemGroup>
 

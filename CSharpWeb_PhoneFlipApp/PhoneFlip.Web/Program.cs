@@ -2,60 +2,48 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PhoneFlip.Data;
 using PhoneFlip.Data.Models;
-using PhoneFlip.Data.Repository.Interfaces;
-using PhoneFlip.Data.Repository;
 using PhoneFlip.Services.Data.Interfaces;
-using PhoneFlip.Services.Data;
 using PhoneFlip.Web.Infrastructure.Extensions;
-using PhoneFlip.Services.Mapping;
-using PhoneFlip.Web.Models;
-
 namespace PhoneFlip.Web
+
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-            string connectionString = builder.Configuration.GetConnectionString("SQLServer")!;
-            string adminEmail = builder.Configuration.GetValue<string>("Administrator:Email")!;
-            string adminUsername = builder.Configuration.GetValue<string>("Administrator:Username")!;
-            string adminPassword = builder.Configuration.GetValue<string>("Administrator:Password")!;
+            var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services
-                .AddDbContext<PhoneFlipDbContext>(options =>
-                {
-                    options.UseSqlServer(connectionString);
-                });
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            builder.Services.AddDbContext<PhoneFlipDbContext>(options =>
+                options.UseSqlServer(connectionString));
+            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services
-                .AddIdentity<ApplicationUser, IdentityRole<Guid>>(cfg =>
-                {
-                    ConfigureIdentity(builder, cfg);
-                })
-                .AddEntityFrameworkStores<PhoneFlipDbContext>()
-                .AddRoles<IdentityRole<Guid>>()
-                .AddSignInManager<SignInManager<ApplicationUser>>()
-                .AddUserManager<UserManager<ApplicationUser>>();
-
-            builder.Services.ConfigureApplicationCookie(cfg =>
-            {
-                cfg.LoginPath = "/Identity/Account/Login";
-            });
+           //builder.Services
+           //  .AddIdentity<ApplicationUser, IdentityRole<Guid>>(cfg =>
+           //  {
+           //      ConfigureIdentity(builder, cfg);
+           //  })
+           //  .AddEntityFrameworkStores<PhoneFlipDbContext>()
+           //  .AddRoles<IdentityRole<Guid>>()
+           //  .AddSignInManager<SignInManager<ApplicationUser>>()
+           //  .AddUserManager<UserManager<ApplicationUser>>();
+           //
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                            .AddEntityFrameworkStores<PhoneFlipDbContext>();
 
             builder.Services.RegisterRepositories(typeof(ApplicationUser).Assembly);
-            //?????builder.Services.RegisterUserDefinedServices(typeof(IMovieService).Assembly);
 
             builder.Services.AddControllersWithViews();
-            builder.Services.AddRazorPages();
 
-            WebApplication app = builder.Build();
-
-            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).Assembly);
+            var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseMigrationsEndPoint();
+            }
+            else
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
@@ -67,19 +55,16 @@ namespace PhoneFlip.Web
 
             app.UseRouting();
 
-            // Authorization can work only if we know who uses the application -> We need Authentication
-            app.UseAuthentication(); // First -> Who am I?
-            app.UseAuthorization(); // Second -> What can I do?
+            app.UseAuthorization();
 
-            app.UseStatusCodePagesWithRedirects("/Home/Error/{0}");
-
-            app.SeedAdministrator(adminEmail, adminUsername, adminPassword);
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
 
             app.Run();
+
+
         }
         private static void ConfigureIdentity(WebApplicationBuilder builder, IdentityOptions cfg)
         {
@@ -107,4 +92,4 @@ namespace PhoneFlip.Web
                 builder.Configuration.GetValue<bool>("Identity:User:RequireUniqueEmail");
         }
     }
-}
+} 

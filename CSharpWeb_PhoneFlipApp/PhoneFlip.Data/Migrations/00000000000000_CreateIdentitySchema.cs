@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace PhoneFlip.Web.Data.Migrations
+namespace PhoneFlip.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PhoneFlip.Data\PhoneFlip.Data.csproj" />
+  </ItemGroup>
+
 </Project>

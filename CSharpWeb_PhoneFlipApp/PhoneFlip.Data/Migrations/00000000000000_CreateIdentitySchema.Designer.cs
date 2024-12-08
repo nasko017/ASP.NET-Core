@@ -3,11 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PhoneFlip.Data;
+
 using System;
 
-namespace PhoneFlip.Web.Data.Migrations
+namespace PhoneFlip.Data.Migrations
 {
     [DbContext(typeof(PhoneFlipDbContext))]
     [Migration("00000000000000_CreateIdentitySchema")]

@@ -1,12 +1,10 @@
-﻿
-namespace PhoneFlip.Web.Infrastructure.Extensions;
-
+﻿namespace PhoneFlip.Web.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using PhoneFlip.Data;
 using PhoneFlip.Data.Models;
+using PhoneFlip.Data;
+using Microsoft.EntityFrameworkCore;
 using static Common.ApplicationConstants;
 
 

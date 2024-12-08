@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PhoneFlip.Data.Models;
-using PhoneFlip.Data.Repository;
 using PhoneFlip.Data.Repository.Interfaces;
+using PhoneFlip.Data.Repository;
 using PhoneFlip.Services.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -109,4 +109,3 @@ public static class ServiceCollectionExtensions
         }
     }
 }
-

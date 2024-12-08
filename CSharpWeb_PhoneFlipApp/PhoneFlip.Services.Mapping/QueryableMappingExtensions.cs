@@ -1,14 +1,14 @@
-﻿using AutoMapper.QueryableExtensions;
+﻿
+using AutoMapper.QueryableExtensions;
 using System.Linq.Expressions;
-
 
 namespace PhoneFlip.Services.Mapping;
 
 public static class QueryableMappingExtensions
 {
     public static IQueryable<TDestination> To<TDestination>(
-            this IQueryable source,
-            params Expression<Func<TDestination, object>>[] membersToExpand)
+        this IQueryable source,
+        params Expression<Func<TDestination, object>>[] membersToExpand)
     {
         if (source == null)
         {

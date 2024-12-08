@@ -1,17 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using PhoneFlip.Data.Models;
 using PhoneFlip.Services.Data.Interfaces;
-using PhoneFlip.Web.ViewModels.Admin.UserManagement;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhoneFlip.Services.Data;
 
-public class UserService:BaseService,IUserService
+public class UserService : BaseService, IUserService
 {
     private readonly UserManager<ApplicationUser> userManager;
     private readonly RoleManager<IdentityRole<Guid>> roleManager;
@@ -23,26 +16,26 @@ public class UserService:BaseService,IUserService
         this.roleManager = roleManager;
     }
 
-    public async Task<IEnumerable<AllUsersViewModel>> GetAllUsersAsync()
-    {
-        IEnumerable<ApplicationUser> allUsers = await this.userManager.Users
-            .ToArrayAsync();
-        ICollection<AllUsersViewModel> allUsersViewModel = new List<AllUsersViewModel>();
-
-        foreach (ApplicationUser user in allUsers)
-        {
-            IEnumerable<string> roles = await this.userManager.GetRolesAsync(user);
-
-            allUsersViewModel.Add(new AllUsersViewModel()
-            {
-                Id = user.Id.ToString(),
-                Email = user.Email,
-                Roles = roles
-            });
-        }
-
-        return allUsersViewModel;
-    }
+   //public async Task<IEnumerable<AllUsersViewModel>> GetAllUsersAsync()
+   //{
+   //    IEnumerable<ApplicationUser> allUsers =  this.userManager.Users
+   //        .ToArray();
+   //    ICollection<AllUsersViewModel> allUsersViewModel = new List<AllUsersViewModel>();
+   //
+   //    foreach (ApplicationUser user in allUsers)
+   //    {
+   //        IEnumerable<string> roles = await this.userManager.GetRolesAsync(user);
+   //
+   //        allUsersViewModel.Add(new AllUsersViewModel()
+   //        {
+   //            Id = user.Id.ToString(),
+   //            Email = user.Email,
+   //            Roles = roles
+   //        });
+   //    }
+   //
+   //    return allUsersViewModel;
+   //}
 
     public async Task<bool> UserExistsByIdAsync(Guid userId)
     {
@@ -124,3 +117,4 @@ public class UserService:BaseService,IUserService
         return true;
     }
 }
+

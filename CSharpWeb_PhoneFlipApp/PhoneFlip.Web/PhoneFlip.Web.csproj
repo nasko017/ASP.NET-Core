@@ -4,15 +4,13 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-PhoneFlip.Web-99f7684e-ea3b-4331-9f76-2f4913811cfa</UserSecretsId>
+    <UserSecretsId>aspnet-PhoneFlip.Web-fe887306-50de-42db-8314-11b4982e2abb</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.11" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11">
@@ -23,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PhoneFlip.Common\PhoneFlip.Common.csproj" />
     <ProjectReference Include="..\PhoneFlip.Data\PhoneFlip.Data.csproj" />
-    <ProjectReference Include="..\PhoneFlip.Services.Data\PhoneFlip.Services.Data.csproj" />
     <ProjectReference Include="..\PhoneFlip.Web.Infrastructure\PhoneFlip.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\PhoneFlip.Web.ViewModels\PhoneFlip.Web.ViewModels.csproj" />
   </ItemGroup>

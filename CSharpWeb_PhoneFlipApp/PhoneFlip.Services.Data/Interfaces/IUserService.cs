@@ -1,10 +1,11 @@
-﻿using PhoneFlip.Web.ViewModels.Admin.UserManagement;
+﻿
+
 
 namespace PhoneFlip.Services.Data.Interfaces;
 
 public interface IUserService
 {
-    Task<IEnumerable<AllUsersViewModel>> GetAllUsersAsync();
+    //Task<IEnumerable<AllUsersViewModel>> GetAllUsersAsync();
 
     Task<bool> UserExistsByIdAsync(Guid userId);
 
