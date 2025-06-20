@@ -1,6 +1,0 @@
-@PhoneFlip.WebApi_HostAddress = http://localhost:5276
-
-GET {{PhoneFlip.WebApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

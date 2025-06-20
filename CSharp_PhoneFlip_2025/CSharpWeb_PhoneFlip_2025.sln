@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneFlip.Web", "PhoneFlip.Web\PhoneFlip.Web.csproj", "{84E321B0-2660-477D-934D-E7E877CC5517}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{5A10D0D8-3E92-41C7-9CA8-35A180768277}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{41F9803B-0A20-4604-A901-E74DCA74E59F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{7C9A3F6C-CB14-4ACA-9980-F7B28B217712}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneFlip.Data", "PhoneFlip.Data\PhoneFlip.Data.csproj", "{20601901-1851-4E18-8EEA-01CD6C916B1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneFlip.Data.Models", "PhoneFlip.Data.Models\PhoneFlip.Data.Models.csproj", "{490E70D1-136B-4482-AE2F-40C7B65F0F71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneFlip.Services.Data", "PhoneFlip.Services.Data\PhoneFlip.Services.Data.csproj", "{01C541F0-93D7-4B14-8D93-904E1F88BB14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneFlip.Services.Mapping", "PhoneFlip.Services.Mapping\PhoneFlip.Services.Mapping.csproj", "{0CA4DD7C-5531-4598-909B-865A183D5A9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84E321B0-2660-477D-934D-E7E877CC5517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84E321B0-2660-477D-934D-E7E877CC5517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84E321B0-2660-477D-934D-E7E877CC5517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84E321B0-2660-477D-934D-E7E877CC5517}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20601901-1851-4E18-8EEA-01CD6C916B1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20601901-1851-4E18-8EEA-01CD6C916B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20601901-1851-4E18-8EEA-01CD6C916B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20601901-1851-4E18-8EEA-01CD6C916B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{490E70D1-136B-4482-AE2F-40C7B65F0F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{490E70D1-136B-4482-AE2F-40C7B65F0F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{490E70D1-136B-4482-AE2F-40C7B65F0F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{490E70D1-136B-4482-AE2F-40C7B65F0F71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01C541F0-93D7-4B14-8D93-904E1F88BB14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01C541F0-93D7-4B14-8D93-904E1F88BB14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01C541F0-93D7-4B14-8D93-904E1F88BB14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01C541F0-93D7-4B14-8D93-904E1F88BB14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CA4DD7C-5531-4598-909B-865A183D5A9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CA4DD7C-5531-4598-909B-865A183D5A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CA4DD7C-5531-4598-909B-865A183D5A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CA4DD7C-5531-4598-909B-865A183D5A9A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{84E321B0-2660-477D-934D-E7E877CC5517} = {5A10D0D8-3E92-41C7-9CA8-35A180768277}
+		{20601901-1851-4E18-8EEA-01CD6C916B1D} = {41F9803B-0A20-4604-A901-E74DCA74E59F}
+		{490E70D1-136B-4482-AE2F-40C7B65F0F71} = {41F9803B-0A20-4604-A901-E74DCA74E59F}
+		{01C541F0-93D7-4B14-8D93-904E1F88BB14} = {7C9A3F6C-CB14-4ACA-9980-F7B28B217712}
+		{0CA4DD7C-5531-4598-909B-865A183D5A9A} = {7C9A3F6C-CB14-4ACA-9980-F7B28B217712}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D821195-CFBA-4B75-B5AC-D32BDB9B2498}
+	EndGlobalSection
+EndGlobal
